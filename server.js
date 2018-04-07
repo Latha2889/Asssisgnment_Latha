@@ -59,5 +59,6 @@ app.post('/event', function (req, res, next) {
        [ req.body.title, req.body.subTitle, req.body.description ],
        (err, ret) => {
 	  console.log(err, ret)
+	  res.sendStatus(200);
 	});
 })

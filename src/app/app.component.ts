@@ -18,6 +18,7 @@ export class AppComponent {
    constructor(private eventDialog: MatDialog,
    	           private http: HttpClient) { 
    	  this.events = new Array<Event>();
+   	  this.refresh();
    }
 
    openDialog(): void {

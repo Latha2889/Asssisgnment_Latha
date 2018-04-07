@@ -2,7 +2,7 @@ export class Event {
 
     id: number;
 	title: String;
-	subTitle: String;
+	subtitle: String;
 	description: String;
 
 }
