@@ -11,8 +11,11 @@ const pool = new Pool({
 });
 
 //create our table
-pool.query("CREATE TABLE IF NOT EXISTS cinemas (id serial, title text, subTitle text, description text)", (err, res) => {
-  console.log(err, res)
-  pool.end();
+pool.connect((err, client, done) => {
+  client.query("CREATE TABLE IF NOT EXISTS cinemas (id serial, title text, subTitle text, description text)", (err, res) => {
+    console.log(err, res)
+
+    client.query("COMMIT", (err, res) => pool.end());
+  })
 })
 
