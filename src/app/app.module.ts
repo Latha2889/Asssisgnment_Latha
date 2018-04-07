@@ -9,12 +9,15 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatCardModule,
 	     MatIconModule,
-	     MatToolbarModule } from '@angular/material';
+	     MatToolbarModule,
+       MatDialogModule } from '@angular/material';
+import { EventDialogComponent } from './event-dialog/event-dialog.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EventDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,11 @@ import { MatCardModule,
     FlexLayoutModule,
     MatCardModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    EventDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
