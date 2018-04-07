@@ -21,8 +21,10 @@ export class AppComponent {
    	  this.refresh();
    }
 
-   openDialog(): void {
-     const event = new Event();
+   openDialog(event): void {
+   	 if (event == null) {
+         event = new Event();
+     }
 
      // open the dialog
      const dialogRef = this.eventDialog.open(EventDialogComponent, {
@@ -48,6 +50,8 @@ export class AppComponent {
    update(event: Event) {
    	// update an event
    	console.log("Updating event: " + JSON.stringify(event));
+   	this.http.put("/event", event)
+   	   .subscribe(data => this.refresh());
    }
 
    create(event: Event) {
@@ -59,5 +63,7 @@ export class AppComponent {
 
    delete(id: number) {
    	 console.log("Deleting event: " + id);
+   	 this.http.delete("/event/" + id)
+   	    .subscribe(data => this.refresh());
    }
 }

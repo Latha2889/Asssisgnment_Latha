@@ -63,3 +63,26 @@ app.post('/event', function (req, res, next) {
 	  res.send(req.body);
 	});
 })
+
+// update a specific event
+app.put('/event', function (req, res, next) {
+  console.log('Adding event ' + req.body);
+
+   pool.query("update events set title = $1, set subtitle = $2, set description = $3) where id = $4",
+       [ req.body.title, req.body.subTitle, req.body.description, req.body.id ],
+       (err, ret) => {
+	  console.log(err, ret)
+	  req.body.id = ret.rows[0].id;
+	  res.send(req.body);
+	});
+})
+
+// delete a specific event
+app.delete('/event/:id', function (req, res, next) {
+  console.log('Deleting event ' + req.params.id);
+  
+  pool.query("delete from events where id = $1", [ req.params.id ], (err, ret) => {
+	  console.log(err, ret)
+	  res.send({});
+	});
+})
