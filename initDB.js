@@ -16,7 +16,7 @@ const pool = new Pool({
 
   try {
     await client.query('BEGIN')
-    const { rows } = await client.query("CREATE TABLE IF NOT EXISTS cinemas (id serial, title text, subTitle text, description text)")
+    const { rows } = await client.query("CREATE TABLE IF NOT EXISTS events (id serial, title text, subTitle text, description text)")
 
     await client.query('COMMIT')
   } catch (e) {
