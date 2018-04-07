@@ -5,3 +5,4 @@ heroku create
 heroku addons:create heroku-postgresql:hobby-dev
 heroku push heroku master
 heroku run "npm run initdb"
+heroku open
