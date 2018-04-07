@@ -1,6 +1,18 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+
+// lets initialize the postgres connection pool
+const { Pool } = require('pg');
+const postgresUrl = new URL(process.env.DATABASE_URL);
+const pool = new Pool({
+  user: postgresUrl.username,
+  host: postgresUrl.hostname,
+  database: postgresUrl.pathname,
+  password: postgresUrl.password,
+  port: Number(postgresUrl.port),
+});
+
 // Run the app by serving the static files
 // in the dist directory
 app.use(express.static(__dirname + '/dist'));
@@ -21,17 +33,30 @@ app.get('/', function(req, res) {
 // get the event list
 app.get('/event', function (req, res, next) {
   console.log('Getting events');
-  next() // pass control to the next handler
+
+  pool.query("select id, title, subTitle, description from events", (err, ret) => {
+	  console.log(err, ret)
+	  res.send(ret.rows);
+	});
 })
 
 // get a specific event
 app.get('/event/:id', function (req, res, next) {
   console.log('Getting event ' + req.params.id);
-  next() // pass control to the next handler
+  
+  pool.query("select id, title, subTitle, description from events where id = $1", [ req.params.id ], (err, ret) => {
+	  console.log(err, ret)
+	  res.send(ret.rows[0]);
+	});
 })
 
 // add a specific event
 app.post('/event', function (req, res, next) {
   console.log('Adding event ' + req.body);
-  next() // pass control to the next handler
+
+   pool.query("insert into events (title, subTitle, description) values ($1, $2, $3)",
+       [ req.body.title, req.body.subTitle, req.body.description ],
+       (err, ret) => {
+	  console.log(err, ret)
+	});
 })

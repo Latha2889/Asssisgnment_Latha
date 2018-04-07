@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 
 import { MatDialog, MatDialogRef } from '@angular/material';
+
+import { HttpClient } from '@angular/common/http';
 
 import { Event } from './event';
 import { EventDialogComponent } from './event-dialog/event-dialog.component';
@@ -13,7 +15,10 @@ import { EventDialogComponent } from './event-dialog/event-dialog.component';
 export class AppComponent {
    events: Array<Event>;
 
-   constructor(private eventDialog: MatDialog) { }
+   constructor(private eventDialog: MatDialog,
+   	           private http: HttpClient) { 
+   	  this.events = new Array<Event>();
+   }
 
    openDialog(): void {
      const event = new Event();
@@ -22,11 +27,21 @@ export class AppComponent {
      const dialogRef = this.eventDialog.open(EventDialogComponent, {
      	data: event
      });
+
+     dialogRef.afterClosed().subscribe(result => {
+     	if (result.id == null) {
+     		this.create(result);
+     	} else {
+     		this.update(event);
+     	}
+     });
    }
 
    refresh() {
    	// update the list of events
    	console.log("Refreshing");
+   	this.http.get<Array<Event>>("/event")
+   	    .subscribe(data => this.events = data);
    }
 
    update(event: Event) {
@@ -35,10 +50,13 @@ export class AppComponent {
    }
 
    create(event: Event) {
-   	// create an event
+   	// create an event and refresh the list
    	console.log("Creating event: " + JSON.stringify(event));
+   	this.http.post("/event", event)
+   	    .subscribe(data => this.refresh());
+   }
 
-   	// refresh the list
-   	this.refresh();
+   delete(id: number) {
+   	 console.log("Deleting event: " + id);
    }
 }

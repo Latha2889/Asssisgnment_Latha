@@ -29,5 +29,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 * Sign up for a free heroku account https://signup.heroku.com
 * Install the heroku cli - https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
-* Run ./startProject.sh from the command line (Mac/Linux)
+* Run ./bootstrap.sh from the command line (Mac/Linux)
 * 

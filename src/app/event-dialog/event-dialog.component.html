@@ -1,8 +1,19 @@
 <h1 mat-dialog-title>Event</h1>
-<div mat-dialog-content>
-
+<div mat-dialog-content fxLayout="column">
+    <mat-form-field fxFlex>
+    	<input matInput placeholder="title" [(ngModel)]="event.title" required>
+    </mat-form-field>
+    <mat-form-field fxFlex>
+    	<input matInput placeholder="Subtitle" [(ngModel)]="event.subTitle" required>
+    </mat-form-field>
+    <mat-form-field fxFlex>
+    	<textarea matInput placeholder="Description" 
+    	          matTextareaAutosize matAutosizeMinRows="2" 
+    	          [(ngModel)]="event.description"
+    	          required></textarea>
+    </mat-form-field>
 </div>
 <div mat-dialog-actions>
 	<button mat-button (click)="onNoClick()">Cancel</button>
-	<button mat-button [mat-dialog-close] cdkFocusInitial>Ok</button>
+	<button mat-button [mat-dialog-close]="event" cdkFocusInitial>Ok</button>
 </div>

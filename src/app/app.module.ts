@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule }    from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
@@ -7,10 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { FormsModule } from '@angular/forms';
+
 import { MatCardModule,
 	     MatIconModule,
 	     MatToolbarModule,
-       MatDialogModule } from '@angular/material';
+       MatDialogModule,
+       MatFormFieldModule,
+       MatInputModule } from '@angular/material';
 import { EventDialogComponent } from './event-dialog/event-dialog.component';
 
 
@@ -22,11 +27,15 @@ import { EventDialogComponent } from './event-dialog/event-dialog.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FlexLayoutModule,
+    FormsModule,
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents: [
     EventDialogComponent
