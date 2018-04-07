@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const url = require('url');
+const { URL } = require('url');
 
 // lets initialize the postgres connection pool
 const { Pool } = require('pg');
-const postgresUrl = new url(process.env.DATABASE_URL);
+const postgresUrl = new URL(process.env.DATABASE_URL);
 const pool = new Pool({
   user: postgresUrl.username,
   host: postgresUrl.hostname,

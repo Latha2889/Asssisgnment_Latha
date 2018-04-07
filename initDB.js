@@ -1,7 +1,7 @@
 // lets initialize the postgres connection pool
 const { Pool } = require('pg');
-const url = require('url');
-const postgresUrl = new url(process.env.DATABASE_URL);
+const { URL } = require('url');
+const postgresUrl = new URL(process.env.DATABASE_URL);
 const pool = new Pool({
   user: postgresUrl.username,
   host: postgresUrl.hostname,
