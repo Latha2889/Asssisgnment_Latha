@@ -55,10 +55,10 @@ app.get('/event/:id', function (req, res, next) {
 app.post('/event', function (req, res, next) {
   console.log('Adding event ' + req.body);
 
-   pool.query("insert into events (title, subTitle, description) values ($1, $2, $3)",
+   pool.query("insert into events (title, subTitle, description) values ($1, $2, $3) RETURNING id",
        [ req.body.title, req.body.subTitle, req.body.description ],
        (err, ret) => {
 	  console.log(err, ret)
-	  res.sendStatus(200);
+	  res.send(req.body);
 	});
 })
