@@ -66,13 +66,12 @@ app.post('/event', function (req, res, next) {
 
 // update a specific event
 app.put('/event', function (req, res, next) {
-  console.log('Adding event ' + req.body);
+  console.log('Updating event ' + req.body);
 
    pool.query("update events set title = $1, set subtitle = $2, set description = $3) where id = $4",
        [ req.body.title, req.body.subTitle, req.body.description, req.body.id ],
        (err, ret) => {
 	  console.log(err, ret)
-	  req.body.id = ret.rows[0].id;
 	  res.send(req.body);
 	});
 })
