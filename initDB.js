@@ -5,7 +5,7 @@ const postgresUrl = new URL(process.env.DATABASE_URL);
 const pool = new Pool({
   user: postgresUrl.username,
   host: postgresUrl.hostname,
-  database: postgresUrl.pathname,
+  database: postgresUrl.pathname.substr(1),
   password: postgresUrl.password,
   port: Number(postgresUrl.port),
 });
