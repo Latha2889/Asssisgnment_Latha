@@ -1,33 +1,15 @@
-# LivesafeQaAssignment
+# LiveSafe QA Assignment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+This is a quick assignment for Test Engineering candidates to submit to LiveSafe. See the
+[ASSIGNMENT.md](ASSIGNMENT.md) for details specific to the assignment.
 
-## Development server
+To get started and submit your work.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Clone this project from this private repository Complete the assignment as instructed in
+  ASSIGNMENT.md
 
-## Code scaffolding
+* You will need to sign up for a free Heroku account to host the project and have access to the database
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* When ready to submit create a patch of your work. (Ex: git diff origin/master master > mypatch.patch)
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-
-* Sign up for a free heroku account https://signup.heroku.com
-* Install the heroku cli - https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
-* Run ./bootstrap.sh from the command line (Mac/Linux)
-* 
+* Email the mypatch.patch file back to the LiveSafe staff that sent the assignment
