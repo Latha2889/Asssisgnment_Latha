@@ -6,7 +6,7 @@ This is a quick assignment for Test Engineering candidates to submit to LiveSafe
 To get started and submit your work.
 
 * Clone this project from this private repository Complete the assignment as instructed in
-  ASSIGNMENT.md
+  Assignment.md
 
 * You will need to sign up for a free Heroku account to host the project and have access to the database
 
