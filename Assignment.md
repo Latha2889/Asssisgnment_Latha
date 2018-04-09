@@ -18,7 +18,9 @@ This will login to Heroku, create the project, add all the dependencies, create 
 
 * Run [./bootstrap.sh](bootstrap.sh) from the command line (Mac/Linux).  For Windows, open the bootstrap.sh file and run the listed commands on the windows command prompt.
 
-If you need to repeat the database connection info, you can use 'heroku config' on the command line.  This will print out a DATABASE_URL variable that takes the format postgres://<user>:<password>@<host>:<port>/<database>. 
+If you need to repeat the database connection info, you can use 'heroku config' on the command line.  This will print out a DATABASE_URL variable that takes the format:
+
+    postgres://<user>:<password>@<host>:<port>/<database>. 
 
 ## Tasks 
 
